@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPI - Effortless Wellness for High-Performers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f7fa;
+            overflow: hidden;
+        }
+
+        /* Gradient blur background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(58, 134, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 100% 0%, rgba(131, 56, 236, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(255, 0, 110, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(58, 134, 255, 0.3) 0%, transparent 50%);
+            filter: blur(60px);
+            animation: gradientMove 20s ease infinite;
+            z-index: 1;
+        }
+
+        @keyframes gradientMove {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-5%, 5%) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-family: "Segoe UI", sans-serif;
+            font-weight: 800;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1b31;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-family: "Segoe UI", sans-serif;
+
+            font-size: 1.5rem;
+            color: #4a4a4a;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .trust-text {
+            margin-top: 1rem;
+            font-family: "Segoe UI", sans-serif;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .hero-content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-family: "Segoe UI", sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-family: "Segoe UI", sans-serif;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #8338ec;
+        }
+
+        .nav-button {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            color: white;
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-left {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                margin-left: 0;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        .problem-section {
+            min-height: 100vh;
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .problem-content {
+            z-index: 2;
+        }
+
+        .section-headline {
+            font-family: "Segoe UI", sans-serif;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .section-headline .gradient-text {
+            background: linear-gradient(90deg, #2D9CDB 0%, #7f53d1 50%, #FF00FF 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .section-headline .description {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #666;
+            margin-top: 1.5rem;
+            line-height: 1.6;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .section-headline .description strong {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .section-headline .subtitle {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .pain-points {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .pain-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .pain-point-icon {
+            background: linear-gradient(90deg, #3a86ff, #8338ec);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pain-point-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .pain-point-content h3 {
+            font-family: "Segoe UI", sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .pain-point-content p {
+            font-family: "Segoe UI", sans-serif;
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .impact-statement {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: rgba(131, 56, 236, 0.03);
+            border-radius: 12px;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #1a1a1a;
+            position: relative;
+            font-style: italic;
+        }
+
+        .impact-statement::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 4rem;
+            color: #8338ec;
+            font-family: Georgia, serif;
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .visualization {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .visualization img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .problem-container {
+                grid-template-columns: 1fr;
+            }
+
+            .visualization {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .solution-section {
+            min-height: 100vh;
+            padding: 8rem 2rem;
+            position: relative;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.05), rgba(131, 56, 236, 0.05));
+            overflow: hidden;
+        }
+
+        .solution-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .solution-content {
+            z-index: 2;
+        }
+
+        .solution-headline {
+            font-family: "Segoe UI", sans-serif;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .solution-headline .gradient-text {
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .solution-subheadline {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .key-points {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .key-point-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3a86ff, #8338ec);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 8px 24px rgba(131, 56, 236, 0.2);
+        }
+
+        .key-point-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .key-point-text {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        .solution-visual {
+            position: relative;
+        }
+
+        .solution-visual img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 968px) {
+            .solution-container {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-visual {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .features-section {
+            min-height: 100vh;
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.05), rgba(131, 56, 236, 0.05));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .features-headline {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-subheadline {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(131, 56, 236, 0.1);
+            cursor: pointer;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(131, 56, 236, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(131, 56, 236, 0.3);
+            box-shadow: 
+                0 12px 48px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(131, 56, 236, 0.2);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover .feature-title {
+            color: #22c55e;  /* Same green as the icon */
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3a86ff, #8338ec);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon svg {
+            color: #22c55e;
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.5));
+        }
+
+        .feature-title {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .feature-benefit {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-family: "Segoe UI", sans-serif;
+            font-size: 0.9rem;
+            color: #8338ec;
+        }
+
+        @media (max-width: 768px) {
+            .features-headline {
+                font-size: 2rem;
+            }
+            
+            .features-subheadline {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+        }
+
+        .experience-section {
+            min-height: 100vh;
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.02), rgba(131, 56, 236, 0.02));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .experience-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .experience-headline {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-subheadline {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .dashboard-preview {
+            position: relative;
+            margin-top: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        @keyframes borderGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e, #3a86ff);
+            border-radius: 26px;
+            z-index: -1;
+            background-size: 300% 300%;
+            animation: borderGlow 4s linear infinite;
+            opacity: 0.7;
+        }
+
+        .dashboard-card::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            background: white;
+            border-radius: 23px;
+            z-index: -1;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .dashboard-title {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-align: center;
+        }
+
+        .dashboard-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #3a86ff, #8338ec);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dashboard-icon svg {
+            width: 18px;
+            height: 18px;
+            color: white;
+        }
+
+        .dashboard-content {
+            margin-top: 1.5rem;
+            counter-reset: highlight-counter;
+        }
+
+        .feature-highlight {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            background: rgba(131, 56, 236, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            counter-increment: highlight-counter;
+        }
+
+        .highlight-text {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 0.9rem;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .feature-highlight:hover {
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+        }
+
+        .feature-highlight:hover .highlight-text {
+            color: white;
+        }
+
+        @keyframes numberShine {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .feature-highlight::before {
+            content: counter(highlight-counter);
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            min-width: 20px;
+            background: linear-gradient(90deg, #ff006e, #ff4e8c, #ff006e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: numberShine 3s linear infinite;
+            transition: all 0.3s ease;
+        }
+
+        .feature-highlight:hover::before {
+            background: none;
+            color: white;
+            animation: none;
+        }
+
+        @media (max-width: 968px) {
+            .dashboard-preview {
+                flex-direction: column;
+            }
+
+            .dashboard-card {
+                max-width: 100%;
+            }
+        }
+
+        .social-proof-section {
+            min-height: 100vh;
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.02), rgba(131, 56, 236, 0.02));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .social-headline {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 3rem;
+        }
+
+        .social-subheadline {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:nth-child(1) {
+            background: linear-gradient(135deg, #ff006e, #ff4e8c, #ff85b0);
+        }
+
+        .metric-card:nth-child(2) {
+            background: linear-gradient(135deg, #3a86ff, #63a1ff, #8bbaff);
+        }
+
+        .metric-card:nth-child(3) {
+            background: linear-gradient(135deg, #8338ec, #a56ef5, #c7a1ff);
+        }
+
+        .metric-percentage {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            font-family: "Segoe UI", sans-serif;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-text {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1rem;
+            line-height: 1.4;
+            font-family: "Segoe UI", sans-serif;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #3a86ff, #8338ec);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3a86ff, #8338ec);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .author-info h4 {
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        @media (max-width: 968px) {
+            .metrics-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .science-section {
+            min-height: 100vh;
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.05), rgba(131, 56, 236, 0.05));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .science-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .science-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .science-headline {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .science-core {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .science-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .science-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .science-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(131, 56, 236, 0.1));
+            border-radius: 24px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .science-card:hover::before {
+            opacity: 1;
+        }
+
+        .science-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .science-icon svg {
+            width: 100%;
+            height: 100%;
+            color: #8338ec;
+        }
+
+        .science-title {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .partners-section {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .partners-title {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .partner-logo {
+            height: 60px;
+            width: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            fill: #666;
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+        }
+
+        .floating-chips {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .chip {
+            position: absolute;
+            border-radius: 8px;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .chip-small {
+            width: 20px;
+            height: 20px;
+        }
+
+        .chip-medium {
+            width: 35px;
+            height: 35px;
+        }
+
+        .chip-large {
+            width: 50px;
+            height: 50px;
+        }
+
+        .chip-gradient-1 {
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.15), rgba(131, 56, 236, 0.15));
+        }
+
+        .chip-gradient-2 {
+            background: linear-gradient(135deg, rgba(131, 56, 236, 0.15), rgba(255, 0, 110, 0.15));
+        }
+
+        .chip-gradient-3 {
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.15), rgba(58, 134, 255, 0.15));
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, -20px) rotate(10deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-15px, -25px) rotate(-8deg); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(25px, 10px) rotate(15deg); }
+        }
+
+        @media (max-width: 968px) {
+            .science-grid,
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cta-section {
+            min-height: 60vh;
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
+            background-color: #fafafa;
+        }
+
+        .cta-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .cta-background .shape {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: floatShape 20s infinite;
+        }
+
+        .cta-background .shape-1 {
+            background: linear-gradient(45deg, #3a86ff, #8338ec);
+            width: 500px;
+            height: 500px;
+            top: -250px;
+            left: -100px;
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+
+        .cta-background .shape-2 {
+            background: linear-gradient(45deg, #8338ec, #ff006e);
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            right: -150px;
+            border-radius: 50%;
+            animation-delay: -5s;
+        }
+
+        .cta-background .shape-3 {
+            background: linear-gradient(45deg, #ff006e, #3a86ff);
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            left: 50%;
+            border-radius: 50%;
+            animation-delay: -10s;
+        }
+
+        .cta-container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-headline {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subheadline {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .cta-form {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .cta-input-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-input-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+            border-radius: 18px;
+            opacity: 0.15;
+            filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .cta-input-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: white;
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        .cta-input {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid rgba(131, 56, 236, 0.2);
+            border-radius: 16px;
+            background: transparent;
+            transition: all 0.3s ease;
+            font-family: "Segoe UI", sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-input:focus {
+            outline: none;
+            border-color: #8338ec;
+            box-shadow: 0 0 0 4px rgba(131, 56, 236, 0.1);
+        }
+
+        .cta-input-wrapper:hover::before {
+            opacity: 0.25;
+            filter: blur(12px);
+        }
+
+        .cta-input:focus + .cta-input-wrapper::before {
+            opacity: 0.3;
+            filter: blur(15px);
+        }
+
+        .cta-button {
+            margin-top: 1.5rem;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e);
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Segoe UI", sans-serif;
+            background-size: 200% auto;
+        }
+
+        .cta-button:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(131, 56, 236, 0.25);
+        }
+
+        .trust-text {
+            margin-top: 1.5rem;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 0 0 0 rgba(131, 56, 236, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(131, 56, 236, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(131, 56, 236, 0); }
+        }
+
+        .cta-button {
+            animation: buttonGlow 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .cta-headline {
+                font-size: 2rem;
+            }
+
+            .cta-subheadline {
+                font-size: 1.1rem;
+            }
+
+            .cta-form {
+                padding: 0 1rem;
+            }
+        }
+
+        .footer {
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.05), rgba(131, 56, 236, 0.05));
+            padding: 4rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-title {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 0.9rem;
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .footer-link:hover {
+            color: #8338ec;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(131, 56, 236, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .footer-bottom a {
+            color: #8338ec;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="#" class="logo">EPI</a>
+            <ul class="nav-links">
+                <li><a href="#problem">The Problem</a></li>
+                <li><a href="#solution">The Solution</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#results">Results</a></li>
+            </ul>
+        </div>
+        <a href="#" class="nav-button">Unlock your vitality</a>
+    </nav>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Effortless Wellness for High-Performers—Designed for Your Busy Life.</h1>
+            <p class="hero-subtitle">EPI seamlessly integrates into your routine, giving you instant, personalized health optimization—maximum results, minimal effort.</p>
+            <a href="#" class="cta-button">Start Your Effortless Wellness Journey</a>
+            <p class="trust-text">Your body will thank you -- for years later.</p>
+        </div>
+    </section>
+
+    <section id="problem" class="problem-section">
+        <div class="problem-container">
+            <div class="problem-content">
+                <div class="floating-chips">
+                    <!-- Top area -->
+                    <div class="chip chip-small chip-gradient-1" style="top: 10%; left: 8%; animation: float1 7s infinite;"></div>
+                    <div class="chip chip-medium chip-gradient-2" style="top: 18%; right: 12%; animation: float2 8.5s infinite;"></div>
+                    
+                    <!-- Middle area (sparse to not interfere with text) -->
+                    <div class="chip chip-large chip-gradient-3" style="top: 45%; left: 15%; animation: float3 9s infinite;"></div>
+                    <div class="chip chip-small chip-gradient-1" style="top: 40%; right: 18%; animation: float2 7.5s infinite;"></div>
+                    
+                    <!-- Bottom area -->
+                    <div class="chip chip-medium chip-gradient-2" style="bottom: 20%; left: 12%; animation: float1 8s infinite;"></div>
+                    <div class="chip chip-small chip-gradient-3" style="bottom: 25%; right: 15%; animation: float3 7s infinite;"></div>
+                </div>
+
+                <h2 class="section-headline">
+                    <span class="gradient-text">Why the Wellness Industry is Failing High Achievers</span>
+                </h2>
+                
+                <div class="pain-points">
+                    <div class="pain-point" style="animation-delay: 0.2s;">
+                        <div class="pain-point-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="pain-point-content">
+                            <h3>Your Time is Too Valuable for Complicated Health Plans</h3>
+                            <p>You're balancing deadlines, meetings, and personal goals—there's no room for a wellness plan that feels like a second job.</p>
+                        </div>
+                    </div>
+
+                    <div class="pain-point" style="animation-delay: 0.4s;">
+                        <div class="pain-point-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <div class="pain-point-content">
+                            <h3>Too Much Information, No Clear Answers</h3>
+                            <p>Endless diets, conflicting advice, and wellness fads—how do you know what actually works for YOU?</p>
+                        </div>
+                    </div>
+
+                    <div class="pain-point" style="animation-delay: 0.6s;">
+                        <div class="pain-point-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                            </svg>
+                        </div>
+                        <div class="pain-point-content">
+                            <h3>Wellness Shouldn't Feel Like Another Task</h3>
+                            <p>You're already running at full capacity. If taking care of your health feels exhausting, it's no wonder it keeps getting pushed aside.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="impact-statement">
+                    "Every time you push wellness aside, you're silently lowering your energy, focus, and resilience. Success doesn't come from working harder—it comes from working smarter. And that starts with a wellness system built for high achievers like you." Karim Amor, Founder of EPI
+                </div>
+            </div>
+
+            <div class="visualization">
+                <img src="assets/tasks_health.svg" alt="Health and Tasks Illustration">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="features-container">
+            <div class="features-header">
+                <h2 class="features-headline">The Future of Wellness is Effortless—Optimized for You.</h2>
+                <p class="features-subheadline">
+                    EPI seamlessly adapts to your lifestyle, removing the complexity of health tracking while delivering AI-driven, science-backed recommendations to optimize your performance, energy, and longevity.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">AI-Driven Smart Scheduling</h3>
+                    <p class="feature-description">
+                        Our AI system intelligently integrates with your calendar, automatically finding the perfect moments for wellness activities.
+                    </p>
+                    <p class="feature-benefit">🕒 Automatically syncs with your calendar—health without the hassle.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Meal Scan & Instant Feedback</h3>
+                    <p class="feature-description">
+                        Simply take a picture of your meal and receive immediate nutrition insights and personalized recommendations.
+                    </p>
+                    <p class="feature-benefit">📸 Take a picture, get real-time nutrition insights & recommendations.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Intuitive Adaptive AI Companion</h3>
+                    <p class="feature-description">
+                        An intelligent system that learns your habits, adapts to your body's responses, and evolves with you over time.
+                    </p>
+                    <p class="feature-benefit">🤖 Learns your habits, adapts to your body, and evolves over time.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Minimal Time Commitment</h3>
+                    <p class="feature-description">
+                        Achieve significant results through micro-adjustments that seamlessly integrate into your existing routine.
+                    </p>
+                    <p class="feature-benefit">⏳ Achieve real results with micro-adjustments—no extra effort needed.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Effortless Tracking & Optimization</h3>
+                    <p class="feature-description">
+                        Get comprehensive health insights and optimization recommendations without manual input or tracking.
+                    </p>
+                    <p class="feature-benefit">📊 Get data-backed insights without manual input—your wellness, automated.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Smart Habit Integration</h3>
+                    <p class="feature-description">
+                        Get personalized recommendations that naturally fit into your daily routine, backed by real-time data analysis of your lifestyle patterns.
+                    </p>
+                    <p class="feature-benefit">📊 Data-driven suggestions that enhance your existing habits—not disrupt them.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience-section">
+        <div class="experience-container">
+            <div class="experience-header">
+                <h2 class="experience-headline">Your Personalized Health Dashboard—With Zero Friction</h2>
+                <p class="experience-subheadline">
+                    Effortless, adaptive health tracking designed for productivity-focused entrepreneurs.
+                </p>
+            </div>
+
+            <div class="dashboard-preview">
+                <div class="dashboard-card">
+                    <div class="dashboard-title">
+                        <div class="dashboard-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        Real-Time Adaptation
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="feature-highlight">
+                            <span class="highlight-text">AI automatically adjusts to your schedule changes</span>
+                        </div>
+                        <div class="feature-highlight">
+                            <span class="highlight-text">Smart notifications based on your productivity patterns</span>
+                        </div>
+                        <div class="feature-highlight">
+                            <span class="highlight-text">Dynamic recommendations that evolve with you</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-title">
+                        <div class="dashboard-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        Zero-Effort Tracking
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="feature-highlight">
+                            <span class="highlight-text">Automatic activity and habit detection</span>
+                        </div>
+                        <div class="feature-highlight">
+                            <span class="highlight-text">Passive data collection—no manual input needed</span>
+                        </div>
+                        <div class="feature-highlight">
+                            <span class="highlight-text">Intelligent pattern recognition and insights</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-title">
+                        <div class="dashboard-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
+                        </div>
+                        Instant Results
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="feature-highlight">
+                            <span class="highlight-text">Real-time health and performance metrics</span>
+                        </div>
+                        <div class="feature-highlight">
+                            <span class="highlight-text">Personalized optimization suggestions</span>
+                        </div>
+                        <div class="feature-highlight">
+                            <span class="highlight-text">Progress tracking without the hassle</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="social-proof" class="social-proof-section">
+        <div class="social-container">
+            <div class="social-header">
+                <h2 class="social-headline">Real Entrepreneurs, Real Transformations</h2>
+                <p class="social-subheadline">Based on feedback from over 100+ beta testers</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-percentage">92%</div>
+                    <div class="metric-text">reported increased energy</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-percentage">88%</div>
+                    <div class="metric-text">improved focus & productivity</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-percentage">95%</div>
+                    <div class="metric-text">better sleep quality</div>
+                </div>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "EPI fit into my schedule effortlessly—no more decision fatigue."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Alex T.</h4>
+                            <p>Startup Founder</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "AI-driven tracking means I get results without lifting a finger."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <h4>Sarah M.</h4>
+                            <p>Tech Consultant</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "I went from burnout to peak focus—all in less than a month."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">D</div>
+                        <div class="author-info">
+                            <h4>David L.</h4>
+                            <p>SaaS CEO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="science" class="science-section">
+        <div class="floating-chips">
+            <div class="chip chip-small chip-gradient-1" style="top: 15%; left: 10%; animation: float1 7s infinite;"></div>
+            <div class="chip chip-medium chip-gradient-2" style="top: 25%; left: 15%; animation: float2 8s infinite;"></div>
+            <div class="chip chip-large chip-gradient-3" style="bottom: 20%; left: 20%; animation: float3 9s infinite;"></div>
+            <div class="chip chip-small chip-gradient-1" style="top: 35%; right: 18%; animation: float2 7.5s infinite;"></div>
+            <div class="chip chip-medium chip-gradient-2" style="bottom: 25%; left: 18%; animation: float1 8.5s infinite;"></div>
+            <div class="chip chip-small chip-gradient-3" style="bottom: 15%; left: 25%; animation: float3 7s infinite;"></div>
+            <div class="chip chip-large chip-gradient-1" style="bottom: 20%; right: 15%; animation: float2 9s infinite;"></div>
+            <div class="chip chip-medium chip-gradient-2" style="bottom: 30%; right: 22%; animation: float1 8s infinite;"></div>
+            <div class="chip chip-small chip-gradient-3" style="top: 50%; left: 50%; animation: float3 8.5s infinite;"></div>
+        </div>
+
+        <div class="science-container">
+            <div class="science-header">
+                <h2 class="science-headline">The Science of Effortless Health Optimization</h2>
+                <p class="science-core">
+                    EPI's AI learns from millions of data points, cross-referencing with scientifically validated health research to provide personalized recommendations.
+                </p>
+            </div>
+
+            <div class="science-grid">
+                <div class="science-card">
+                    <div class="science-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
+                    </div>
+                    <h3 class="science-title">Developed with Top Metabolic Health Researchers</h3>
+                </div>
+
+                <div class="science-card">
+                    <div class="science-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="science-title">AI-Driven, Continuously Improving Insights Based on Your Body's Data</h3>
+                </div>
+
+                <div class="science-card">
+                    <div class="science-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+                    <h3 class="science-title">Built on Precision Diagnostics & Behavioral Science</h3>
+                </div>
+            </div>
+
+            <div class="partners-section">
+                <h3 class="partners-title">Trusted by Leading Research Institutions</h3>
+                <div class="partners-grid">
+                    <!-- Harvard Logo -->
+                    <svg class="partner-logo" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M245.5 26c-13 0-24.3 1.1-34.2 3.3v67.7c10.4-2.3 21.7-3.4 34.2-3.4 12.6 0 23.8 1.1 34.2 3.4V29.3c-9.9-2.2-21.3-3.3-34.2-3.3zm0 87.6c-13 0-24.3 1.1-34.2 3.3v67.7c10.4-2.3 21.7-3.4 34.2-3.4 12.6 0 23.8 1.1 34.2 3.4v-67.7c-9.9-2.2-21.3-3.3-34.2-3.3zm0 87.6c-13 0-24.3 1.1-34.2 3.3v67.7c10.4-2.3 21.7-3.4 34.2-3.4 12.6 0 23.8 1.1 34.2 3.4v-67.7c-9.9-2.2-21.3-3.3-34.2-3.3zm0 87.6c-13 0-24.3 1.1-34.2 3.3v67.7c10.4-2.3 21.7-3.4 34.2-3.4 12.6 0 23.8 1.1 34.2 3.4v-67.7c-9.9-2.2-21.3-3.3-34.2-3.3zm0 87.6c-13 0-24.3 1.1-34.2 3.3v67.7c10.4-2.3 21.7-3.4 34.2-3.4 12.6 0 23.8 1.1 34.2 3.4v-67.7c-9.9-2.2-21.3-3.3-34.2-3.3z"/>
+                        <path d="M245.5 26v67.6h34.2V26h-34.2zm0 87.6v67.6h34.2v-67.6h-34.2zm0 87.6v67.6h34.2v-67.6h-34.2zm0 87.6v67.6h34.2v-67.6h-34.2zm0 87.6v67.6h34.2v-67.6h-34.2z"/>
+                    </svg>
+
+                    <!-- Cambridge Logo -->
+                    <svg class="partner-logo" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M256 26C129.3 26 26 129.3 26 256s103.3 230 230 230 230-103.3 230-230S382.7 26 256 26zm0 419.2c-104.8 0-189.2-84.4-189.2-189.2S151.2 66.8 256 66.8 445.2 151.2 445.2 256 360.8 445.2 256 445.2z"/>
+                        <path d="M256 96.8c-87.7 0-159.2 71.5-159.2 159.2S168.3 415.2 256 415.2 415.2 343.7 415.2 256 343.7 96.8 256 96.8zm0 277.4c-65.2 0-118.2-53-118.2-118.2S190.8 137.8 256 137.8s118.2 53 118.2 118.2-53 118.2-118.2 118.2z"/>
+                    </svg>
+
+                    <!-- NASA Logo -->
+                    <svg class="partner-logo" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M256 26C129.3 26 26 129.3 26 256s103.3 230 230 230 230-103.3 230-230S382.7 26 256 26zm149.3 379.3c-39.6 39.6-92.3 61.4-148.3 61.4-56 0-108.7-21.8-148.3-61.4-39.6-39.6-61.4-92.3-61.4-148.3 0-56 21.8-108.7 61.4-148.3 39.6-39.6 92.3-61.4 148.3-61.4 56 0 108.7 21.8 148.3 61.4 39.6 39.6 61.4 92.3 61.4 148.3 0 56-21.8 108.7-61.4 148.3z"/>
+                        <path d="M256 106.7c-82.5 0-149.3 66.9-149.3 149.3 0 82.5 66.9 149.3 149.3 149.3 82.5 0 149.3-66.9 149.3-149.3 0-82.5-66.9-149.3-149.3-149.3zm0 257.6c-59.8 0-108.3-48.5-108.3-108.3S196.2 147.7 256 147.7s108.3 48.5 108.3 108.3-48.5 108.3-108.3 108.3z"/>
+                    </svg>
+
+                    <!-- European Union Logo -->
+                    <svg class="partner-logo" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="256" cy="256" r="230"/>
+                        <path d="M256 71.8l23.9 73.5h77.4l-62.6 45.5 23.9 73.5L256 219.8l-62.6 44.5 23.9-73.5-62.6-45.5h77.4z"/>
+                        <path d="M256 292.2l23.9 73.5h77.4l-62.6 45.5 23.9 73.5L256 440.2l-62.6 44.5 23.9-73.5-62.6-45.5h77.4z"/>
+                        <path d="M71.8 256l73.5-23.9v-77.4l45.5 62.6 73.5-23.9L219.8 256l44.5 62.6-73.5-23.9-45.5 62.6v-77.4z"/>
+                        <path d="M292.2 256l73.5-23.9v-77.4l45.5 62.6 73.5-23.9L440.2 256l44.5 62.6-73.5-23.9-45.5 62.6v-77.4z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="cta-section">
+        <div class="cta-background">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <div class="cta-container">
+            <h2 class="cta-headline">Start Your Effortless Wellness Journey Today</h2>
+            <p class="cta-subheadline">No setup. No manual tracking. Just results.</p>
+            
+            <form class="cta-form">
+                <div class="cta-input-wrapper">
+                    <input 
+                        type="email" 
+                        class="cta-input" 
+                        placeholder="Enter your email address"
+                        required
+                    >
+                </div>
+                <button type="submit" class="cta-button">
+                    Get Started – It's FREE!
+                </button>
+                <p class="trust-text">Join the next wave of our beta testers</p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 class="footer-title">Company</h3>
+                <a href="#about" class="footer-link">About Us</a>
+                <a href="#careers" class="footer-link">Careers</a>
+                <a href="#press" class="footer-link">Press</a>
+                <a href="#blog" class="footer-link">Blog</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 class="footer-title">Legal</h3>
+                <a href="#privacy" class="footer-link">Privacy Policy</a>
+                <a href="#terms" class="footer-link">Terms of Service</a>
+                <a href="#cookies" class="footer-link">Cookie Policy</a>
+                <a href="#security" class="footer-link">Security</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 class="footer-title">Support</h3>
+                <a href="#help" class="footer-link">Help Center</a>
+                <a href="#contact" class="footer-link">Contact Us</a>
+                <a href="#status" class="footer-link">System Status</a>
+                <a href="#feedback" class="footer-link">Feedback</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 class="footer-title">Contact</h3>
+                <a href="mailto:hello@epi.ai" class="footer-link">hello@epi.ai</a>
+                <a href="tel:+1234567890" class="footer-link">+1 (234) 567-890</a>
+                <a href="#social" class="footer-link">Social Media</a>
+                <a href="#office" class="footer-link">Office Locations</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 EPI.ai - All rights reserved. Built with ❤️ for high achievers.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation for progress bars
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.progress-fill');
+                    progressBars.forEach(bar => {
+                        const progress = bar.getAttribute('data-progress');
+                        bar.style.width = `${progress}%`;
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.querySelector('.visualization'));
+    </script>
+</body>
+</html>
