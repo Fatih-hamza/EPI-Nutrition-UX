@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EPI - Effortless Wellness for High-Performers</title>
+    <title>EPI - Effortless Wellness for High-Achievers</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -187,6 +190,39 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
+        /* Hamburger icon */
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 10px 0;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+    
+
+
+        /*
         @media (max-width: 768px) {
             .navbar {
                 padding: 1rem;
@@ -206,7 +242,7 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
-        }
+        }*/
 
         .problem-section {
             min-height: 100vh;
@@ -1464,18 +1500,19 @@
             <a href="#" class="logo">EPI</a>
             <ul class="nav-links">
                 <li><a href="#problem">The Problem</a></li>
-                <li><a href="#solution">The Solution</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#results">Results</a></li>
+                <li><a href="#features">The Solution</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#social-proof">Results</a></li>
             </ul>
         </div>
-        <a href="#" class="nav-button">Unlock your vitality</a>
+        <a href="#cta" class="nav-button">Unlock your vitality</a>
     </nav>
+    
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Effortless Wellness for High-Performers—Designed for Your Busy Life.</h1>
+            <h1 class="hero-title">Effortless Wellness for High-Achievers—Designed for Your Busy Life.</h1>
             <p class="hero-subtitle">EPI seamlessly integrates into your routine, giving you instant, personalized health optimization—maximum results, minimal effort.</p>
-            <a href="#" class="cta-button">Start Your Effortless Wellness Journey</a>
+            <a href="#cta" class="cta-button">Start Your Effortless Wellness Journey</a>
             <p class="trust-text">Your body will thank you -- for years later.</p>
         </div>
     </section>
@@ -1540,7 +1577,7 @@
                 </div>
 
                 <div class="impact-statement">
-                    "Every time you push wellness aside, you're silently lowering your energy, focus, and resilience. Success doesn't come from working harder—it comes from working smarter. And that starts with a wellness system built for high achievers like you." Karim Amor, Founder of EPI
+                    "Every time you push wellness aside, you're silently lowering your energy, focus, and resilience. Success doesn't come from working harder—it comes from working smarter. And that starts with a wellness system entirely tailored and built for high achievers." Karim Amor, Founder of EPI
                 </div>
             </div>
 
